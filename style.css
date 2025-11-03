@@ -240,7 +240,7 @@ header nav {
 
 .about-image {
   width: 280px;
-  height: 280px;
+  height: 100%;
   border-radius: 12px;
   overflow: hidden;
   opacity: 0;
@@ -362,5 +362,136 @@ header nav {
     font-size: 0.95rem;
     padding: 0 1rem;
     text-align: justify;
+  }
+}
+
+/* =========== NEW: FEATURE CARDS STYLING =========== */
+.about-features {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease;
+}
+
+.feature-card {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 123, 255, 0.1) 0%,
+    rgba(40, 167, 69, 0.1) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card:hover::before {
+  opacity: 0.1;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .card-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+/* Animation for cards when they come into view */
+.about.animate .about-features {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1s;
+}
+
+/* Staggered animation for individual cards */
+.feature-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease;
+}
+
+.about.animate .feature-card:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.2s;
+}
+
+.about.animate .feature-card:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.4s;
+}
+
+.about.animate .feature-card:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.6s;
+}
+
+/* Responsive layout for cards */
+@media (min-width: 576px) {
+  .about-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .about-features {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
