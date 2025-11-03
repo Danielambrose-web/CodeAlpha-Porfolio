@@ -86,3 +86,21 @@ document.addEventListener("click", (e) => {
     icon.classList.remove("fa-times");
   }
 });
+
+// About Section Scroll Animation
+const aboutSection = document.querySelector(".about");
+
+const observerOptions = {
+  threshold: 0.3,
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("animate");
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+observer.observe(aboutSection);
