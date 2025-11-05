@@ -103,3 +103,26 @@ if (aboutSection) {
   );
   observer.observe(aboutSection);
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const animatedSections = document.querySelectorAll(".animate-on-scroll");
+  if (animatedSections.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      root: null,
+      threshold: 0.15,
+    }
+  );
+
+  animatedSections.forEach((section) => {
+    observer.observe(section);
+  });
+});
