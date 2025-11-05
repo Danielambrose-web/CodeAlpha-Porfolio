@@ -1,35 +1,44 @@
-// Dark/light toggle, simple load animations, nav toggle, and scroll reveal
+// Theme toggle (persisted)
 const themeToggle = document.getElementById("theme-toggle");
+const currentTheme = localStorage.getItem("theme");
+
 if (themeToggle) {
   const themeIcon = themeToggle.querySelector("i");
-  const currentTheme = localStorage.getItem("theme");
+
   if (currentTheme) {
     document.body.setAttribute("data-theme", currentTheme);
-    if (themeIcon) {
-      themeIcon.classList.toggle("fa-moon", currentTheme === "light");
-      themeIcon.classList.toggle("fa-sun", currentTheme !== "light");
+    if (currentTheme === "light" && themeIcon) {
+      themeIcon.classList.remove("fa-sun");
+      themeIcon.classList.add("fa-moon");
     }
   }
 
   themeToggle.addEventListener("click", () => {
-    const theme =
-      document.body.getAttribute("data-theme") === "light" ? "dark" : "light";
-    document.body.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-    if (themeIcon) {
-      themeIcon.classList.toggle("fa-moon", theme === "light");
-      themeIcon.classList.toggle("fa-sun", theme !== "light");
+    const theme = document.body.getAttribute("data-theme");
+    if (theme === "dark") {
+      document.body.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+      if (themeIcon) {
+        themeIcon.classList.remove("fa-sun");
+        themeIcon.classList.add("fa-moon");
+      }
+    } else {
+      document.body.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+      if (themeIcon) {
+        themeIcon.classList.remove("fa-moon");
+        themeIcon.classList.add("fa-sun");
+      }
     }
   });
 }
 
-// Hero/staggered load animations
-const animatedElements = Array.from(document.querySelectorAll(".anim"));
-animatedElements.forEach((el, i) =>
-  setTimeout(() => el.classList.add("is-visible"), i * 200)
-);
+// Hero entrance animations
+document.querySelectorAll(".anim").forEach((el, i) => {
+  setTimeout(() => el.classList.add("is-visible"), i * 200);
+});
 
-// Navigation / hamburger
+// Navigation & hamburger
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 const navLinksLi = document.querySelectorAll(".nav-links li");
@@ -38,49 +47,59 @@ if (hamburger && navLinks) {
   hamburger.addEventListener("click", (e) => {
     e.stopPropagation();
     navLinks.classList.toggle("active");
+
     const icon = hamburger.querySelector("i");
-    if (icon) icon.classList.toggle("fa-times");
-    // animate links inline if list items exist
-    navLinksLi.forEach((link, idx) => {
-      link.style.animation = link.style.animation
-        ? ""
-        : `navLinkFade 0.5s ease forwards ${idx / 7 + 0.3}s`;
-    });
-  });
-
-  // close when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-      navLinks.classList.remove("active");
-      const icon = hamburger.querySelector("i");
-      if (icon) icon.classList.remove("fa-times");
+    if (icon) {
+      icon.classList.toggle("fa-bars");
+      icon.classList.toggle("fa-times");
     }
-  });
 
-  // close on link click
-  navLinksLi.forEach((li) =>
-    li.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-      const icon = hamburger.querySelector("i");
-      if (icon) icon.classList.remove("fa-times");
-    })
-  );
-}
-
-// Scroll reveal helper
-function observeSection(selector, options = { threshold: 0.15 }) {
-  const section = document.querySelector(selector);
-  if (!section) return;
-  const obs = new IntersectionObserver((entries, o) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate");
-        o.unobserve(entry.target);
-      }
+    navLinksLi.forEach((link, index) => {
+      if (link.style.animation) link.style.animation = "";
+      else
+        link.style.animation = `navLinkFade 0.5s ease forwards ${
+          index / 7 + 0.3
+        }s`;
     });
-  }, options);
-  obs.observe(section);
+  });
 }
 
-observeSection(".about", { threshold: 0.3 });
-observeSection(".skills", { threshold: 0.15 });
+navLinksLi.forEach((li) =>
+  li.addEventListener("click", () => {
+    if (navLinks) navLinks.classList.remove("active");
+    const icon = document.querySelector(".hamburger i");
+    if (icon) {
+      icon.classList.add("fa-bars");
+      icon.classList.remove("fa-times");
+    }
+  })
+);
+
+// Close menu when clicking outside
+document.addEventListener("click", (e) => {
+  if (!navLinks?.contains(e.target) && !hamburger?.contains(e.target)) {
+    navLinks?.classList.remove("active");
+    const icon = document.querySelector(".hamburger i");
+    if (icon) {
+      icon.classList.add("fa-bars");
+      icon.classList.remove("fa-times");
+    }
+  }
+});
+
+// About section reveal using IntersectionObserver
+const aboutSection = document.querySelector(".about");
+if (aboutSection) {
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+  observer.observe(aboutSection);
+}

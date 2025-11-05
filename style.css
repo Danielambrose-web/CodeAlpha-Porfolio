@@ -1,4 +1,4 @@
-/* Root variables (consolidated, added missing vars used by skills/cards) */
+/* Variables */
 :root {
   --bg-color: #121212;
   --bg-color2: #424141;
@@ -7,12 +7,6 @@
   --secondary-color: #28a745;
   --accent-color: #1e1e1e;
   --border-color: #333;
-
-  /* used by cards/skills */
-  --card-bg-color: rgba(255, 255, 255, 0.02);
-  --border-color-subtle: rgba(255, 255, 255, 0.06);
-  --shadow-color: rgba(0, 0, 0, 0.25);
-  --blue-accent: #3ea0ff;
 }
 
 [data-theme="light"] {
@@ -23,14 +17,9 @@
   --secondary-color: #218838;
   --accent-color: #ffffff;
   --border-color: #ddd;
-
-  --card-bg-color: rgba(0, 0, 0, 0.03);
-  --border-color-subtle: rgba(0, 0, 0, 0.06);
-  --shadow-color: rgba(0, 0, 0, 0.06);
-  --blue-accent: #1e88ff;
 }
 
-/* Base reset + typography */
+/* Base */
 * {
   margin: 0;
   padding: 0;
@@ -52,7 +41,7 @@ body {
   padding: 0 2rem;
 }
 
-/* Header & Navigation (kept as-is) */
+/* Header / Navigation */
 header {
   position: fixed;
   top: 0;
@@ -69,11 +58,12 @@ header nav {
   height: 5rem;
 }
 .logo {
-  text-decoration: none;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-color);
+  text-decoration: none;
 }
+
 .nav-links {
   display: none;
   list-style: none;
@@ -83,11 +73,12 @@ header nav {
   text-decoration: none;
   color: var(--text-color);
   font-weight: 600;
-  transition: color 0.25s;
+  transition: color 0.3s;
 }
 .nav-links a:hover {
   color: var(--primary-color);
 }
+
 .nav-right {
   display: flex;
   align-items: center;
@@ -100,14 +91,9 @@ header nav {
   color: var(--text-color);
   font-size: 1.5rem;
   cursor: pointer;
-  transition: color 0.2s;
-}
-.theme-toggle:hover,
-.hamburger:hover {
-  color: var(--primary-color);
 }
 
-/* Hero (kept as-is) */
+/* Hero */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -132,6 +118,8 @@ header nav {
   line-height: 1.7;
   font-size: 1.1rem;
 }
+
+/* Buttons */
 .hero-actions {
   display: flex;
   justify-content: center;
@@ -144,7 +132,7 @@ header nav {
   border-radius: 5px;
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.25s;
+  transition: all 0.3s;
 }
 .btn-primary {
   background: var(--primary-color);
@@ -164,6 +152,8 @@ header nav {
   background: var(--primary-color);
   color: #fff;
 }
+
+/* Socials */
 .hero-socials {
   display: flex;
   justify-content: center;
@@ -172,14 +162,14 @@ header nav {
 }
 .hero-socials a {
   color: var(--text-color);
-  transition: color 0.25s, transform 0.25s;
+  transition: color 0.3s, transform 0.3s;
 }
 .hero-socials a:hover {
   color: var(--primary-color);
   transform: translateY(-5px);
 }
 
-/* Simple reusable animation helper */
+/* Entrance animation utility */
 .anim {
   opacity: 0;
   transform: translateY(30px);
@@ -187,38 +177,43 @@ header nav {
 }
 .anim.is-visible {
   opacity: 1;
-  transform: none;
+  transform: translateY(0);
 }
 
-/* About section (cleaned) */
+/* About */
 .about {
   padding: 5rem 0;
   background: var(--bg-color2);
 }
+
+/* Section headings: hidden by default for About animation */
 .section-intro {
   text-align: center;
   color: var(--secondary-color);
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
 }
 .section-title {
   text-align: center;
   font-size: 2.5rem;
   color: var(--primary-color);
   margin-bottom: 3rem;
-}
-
-/* Scope initial hidden state only for about animations */
-.about .section-intro,
-.about .section-title,
-.about .about-image,
-.about .about-text {
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.45s ease;
+  transition: all 0.5s ease;
 }
 
+/* Make headings visible in Skills (so Skills don't inherit About animation) */
+.skills .section-intro,
+.skills .section-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* About content */
 .about-content {
   display: flex;
   flex-direction: column;
@@ -229,6 +224,9 @@ header nav {
   width: 280px;
   border-radius: 12px;
   overflow: hidden;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.5s ease;
 }
 .about-image img {
   width: 100%;
@@ -237,134 +235,114 @@ header nav {
 }
 .about-text {
   max-width: 600px;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.5s ease;
 }
 .about-text p {
   line-height: 1.8;
   color: var(--text-color);
 }
 
-/* About animate state */
+/* About animation when in view */
 .about.animate .section-intro {
   opacity: 1;
-  transform: none;
+  transform: translateY(0);
   transition-delay: 0.2s;
 }
 .about.animate .section-title {
   opacity: 1;
-  transform: none;
-  transition-delay: 0.35s;
+  transform: translateY(0);
+  transition-delay: 0.4s;
 }
 .about.animate .about-image {
   opacity: 1;
-  transform: none;
-  transition-delay: 0.55s;
+  transform: translateX(0);
+  transition-delay: 0.6s;
 }
 .about.animate .about-text {
   opacity: 1;
-  transform: none;
-  transition-delay: 0.75s;
+  transform: translateX(0);
+  transition-delay: 0.8s;
 }
 
-/* Feature cards (kept, simplified) */
+/* Feature cards (merged and simplified) */
 .about-features {
-  margin-top: 2.5rem;
+  margin-top: 4rem;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
-  padding: 0;
+  gap: 2rem;
+  padding: 20px;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(30px);
   transition: all 0.5s ease;
 }
 .feature-card {
   background: linear-gradient(
     135deg,
-    rgba(0, 123, 255, 0.06),
-    rgba(40, 167, 69, 0.04)
+    rgba(0, 123, 255, 0.08) 0%,
+    rgba(40, 167, 69, 0.08) 100%
   );
-  border: 1px solid var(--border-color-subtle);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 2rem;
   text-align: center;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
   position: relative;
   overflow: hidden;
-  transition: transform 0.28s, box-shadow 0.28s;
-}
-.feature-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--secondary-color)
-  );
   opacity: 0;
-  transition: opacity 0.25s;
-  z-index: 0;
+  transform: translateY(30px);
+}
+.feature-card .card-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
 }
 .feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-}
-.feature-card:hover::before {
-  opacity: 0.06;
-}
-.card-icon {
-  font-size: 2rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-  z-index: 2;
-  position: relative;
-  transition: transform 0.28s;
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 .feature-card:hover .card-icon {
-  transform: scale(1.08) rotate(4deg);
+  transform: scale(1.1) rotate(5deg);
 }
-.card-title {
-  font-size: 1.1rem;
+.feature-card .card-title {
+  font-size: 1.25rem;
   color: var(--text-color);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-weight: 600;
-  position: relative;
-  z-index: 2;
 }
-.card-description {
+.feature-card .card-description {
   font-size: 0.95rem;
   color: var(--text-color);
-  line-height: 1.5;
-  z-index: 2;
-  opacity: 0.95;
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
-/* Reveal feature cards when about animates */
+/* Reveal features/cards when About animates */
 .about.animate .about-features {
   opacity: 1;
-  transform: none;
-  transition-delay: 0.9s;
-}
-.feature-card {
-  opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(0);
+  transition-delay: 1s;
 }
 .about.animate .feature-card:nth-child(1) {
   opacity: 1;
-  transform: none;
-  transition-delay: 1.05s;
+  transform: translateY(0);
+  transition-delay: 1.2s;
 }
 .about.animate .feature-card:nth-child(2) {
   opacity: 1;
-  transform: none;
-  transition-delay: 1.2s;
+  transform: translateY(0);
+  transition-delay: 1.4s;
 }
 .about.animate .feature-card:nth-child(3) {
   opacity: 1;
-  transform: none;
-  transition-delay: 1.35s;
+  transform: translateY(0);
+  transition-delay: 1.6s;
 }
 
-/* Skills section and grid */
+/* Skills */
 .skills {
   padding: 6rem 0;
   background: var(--bg-color);
@@ -375,27 +353,26 @@ header nav {
   gap: 1.5rem;
 }
 .skill-card {
-  background: var(--card-bg-color);
-  border: 1px solid var(--border-color-subtle);
+  background: var(--bg-color2);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2rem;
   text-align: center;
-  transition: transform 0.25s, box-shadow 0.25s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .skill-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 25px var(--shadow-color);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px var(--border-color);
 }
 .skill-icon {
-  font-size: 2.5rem;
-  color: var(--blue-accent);
-  margin-bottom: 0.8rem;
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
 }
 .skill-name {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-color);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 .skill-level-bar {
   width: 100%;
@@ -414,52 +391,6 @@ header nav {
   border-radius: 4px;
 }
 
-/* Skills scroll-in animation */
-.skills .skills-grid {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-.skills .skill-card {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
-}
-.skills.animate .skills-grid {
-  opacity: 1;
-  transform: none;
-}
-.skills.animate .skills-grid .skill-card:nth-child(1) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.12s;
-}
-.skills.animate .skills-grid .skill-card:nth-child(2) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.24s;
-}
-.skills.animate .skills-grid .skill-card:nth-child(3) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.36s;
-}
-.skills.animate .skills-grid .skill-card:nth-child(4) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.48s;
-}
-.skills.animate .skills-grid .skill-card:nth-child(5) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.6s;
-}
-.skills.animate .skills-grid .skill-card:nth-child(6) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.72s;
-}
-
 /* Responsive */
 @media (min-width: 576px) {
   .about-features {
@@ -469,6 +400,7 @@ header nav {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (min-width: 768px) {
   .nav-links {
     display: flex;
@@ -485,23 +417,16 @@ header nav {
   .about-content {
     flex-direction: row;
     justify-content: center;
-    gap: 2.5rem;
+    gap: 4rem;
+  }
+  .section-title {
+    font-size: 3rem;
   }
   .about-text {
     text-align: left;
   }
 }
-@media (min-width: 992px) {
-  .about-features {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .skills-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .section-title {
-    font-size: 3rem;
-  }
-}
+
 @media (max-width: 767px) {
   .nav-links {
     position: fixed;
@@ -514,17 +439,17 @@ header nav {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 2rem;
     transform: translateX(-100%);
-    transition: transform 0.28s;
+    transition: transform 0.3s ease-in-out;
     z-index: 999;
   }
   .nav-links.active {
-    transform: none;
+    transform: translateX(0);
   }
   .nav-links li {
     opacity: 0;
-    transition: opacity 0.25s;
+    transition: opacity 0.3s ease-in-out;
   }
   .nav-links.active li {
     opacity: 1;
@@ -538,14 +463,16 @@ header nav {
     padding: 0 1rem;
     text-align: justify;
   }
-  .skills .section-intro {
-    font-size: 0.95rem;
-    padding: 0 1rem;
-    text-align: center;
-  }
 }
 
-/* Accessibility focus hint */
-.skill-card:focus {
-  outline: 2px solid rgba(0, 0, 0, 0.08);
+@media (min-width: 992px) {
+  .about-features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .section-title {
+    font-size: 3rem;
+  }
 }

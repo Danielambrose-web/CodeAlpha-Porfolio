@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio-CodeAlpha-Daniel</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Portfolio — Daniel Ambrose</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- =========== HEADER & NAVIGATION =========== -->
     <header>
       <nav class="container">
         <a href="#" class="logo">Danielambrose-web</a>
+
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -27,91 +27,83 @@
           <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+
         <div class="nav-right">
-          <button id="theme-toggle" class="theme-toggle">
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            aria-label="Toggle theme"
+          >
             <i class="fa-solid fa-sun"></i>
           </button>
-          <button class="hamburger">
+
+          <button class="hamburger" aria-label="Open navigation">
             <i class="fa-solid fa-bars"></i>
           </button>
         </div>
       </nav>
     </header>
 
-    <!-- =========== HERO SECTION =========== -->
-    <section id="home" class="hero container">
-      <div class="hero-content">
-        <h1 class="hero-title anim">Hello, I’m Daniel Ambrose</h1>
-        <h2 class="hero-subtitle anim">A Junior Frontend web developer</h2>
-        <p class="hero-bio anim">
-          I build elegant, responsive, and user-friendly web applications with a
-          passion for clean code and minimalist design.
-        </p>
-        <div class="hero-actions anim">
-          <a href="#projects" class="btn btn-primary">View My Work</a>
-          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-        </div>
-        <div class="hero-socials anim">
-          <a href="#" target="_blank" aria-label="GitHub"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a href="#" target="_blank" aria-label="LinkedIn"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <a href="mailto:danielessientech121@gmail.com" aria-label="Email"
-            ><i class="fas fa-envelope"></i
-          ></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========== ABOUT SECTION =========== -->
-    <section id="about" class="about">
-      <p class="section-intro">Get To Know</p>
-      <h2 class="section-title">About Me</h2>
-
-      <div class="about-content">
-        <div class="about-image">
-          <img src="me-at-nsave.jpg" alt="Portrait of the developer" />
-        </div>
-        <div class="about-text">
+    <main>
+      <section id="home" class="hero container">
+        <div class="hero-content">
+          <h1 class="hero-title anim">Hello, I’m Daniel Ambrose</h1>
+          <h2 class="hero-subtitle anim">A Junior Frontend web developer</h2>
           <p class="hero-bio anim">
-            I'm a passionate junior frontend developer with a strong interest in
-            design and a love for creating clean, user-friendly digital
-            experiences. My journey into tech began with a curiosity about how
-            websites are built, which inspired me to create my first project —
-            and I’ve been learning and growing ever since.
-            <br /><br />
-            I focus on building responsive and interactive interfaces using
-            HTML, CSS, and JavaScript, and I’m constantly improving my skills to
-            write better, more efficient code. I enjoy turning ideas into
-            reality in the browser and learning new tools and frameworks that
-            enhance my workflow.
-            <br /><br />
-            When I’m not coding, I love exploring new web technologies,
-            contributing to small open-source projects, and collaborating with
-            others to create meaningful, functional designs.
+            I build elegant, responsive, and user-friendly web applications with
+            a passion for clean code and minimalist design.
           </p>
+
+          <div class="hero-actions anim">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+          </div>
+
+          <div class="hero-socials anim">
+            <a href="#" target="_blank" aria-label="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="#" target="_blank" aria-label="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="mailto:danielessientech121@gmail.com" aria-label="Email"
+              ><i class="fas fa-envelope"></i
+            ></a>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section id="about" class="about">
+        <p class="section-intro">Get To Know</p>
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about-content">
+          <div class="about-image">
+            <img src="me-at-nsave.jpg" alt="Portrait of the developer" />
+          </div>
+
+          <div class="about-text">
+            <p class="hero-bio anim">
+              I'm a passionate junior frontend developer with a strong interest
+              in design and a love for creating clean, user-friendly digital
+              experiences. I focus on building responsive and interactive
+              interfaces using HTML, CSS, and JavaScript, and I'm continually
+              improving my skills and workflow.
+            </p>
+          </div>
+        </div>
 
         <div class="about-features">
-
           <div class="feature-card">
-            <div class="card-icon">
-              <i class="fas fa-code"></i>
-            </div>
+            <div class="card-icon"><i class="fas fa-code"></i></div>
             <h3 class="card-title">Clean Code</h3>
             <p class="card-description">
               Writing maintainable and scalable code following best practices.
             </p>
           </div>
 
-
           <div class="feature-card">
-            <div class="card-icon">
-              <i class="fas fa-palette"></i>
-            </div>
+            <div class="card-icon"><i class="fas fa-palette"></i></div>
             <h3 class="card-title">Creative Design</h3>
             <p class="card-description">
               Crafting beautiful interfaces with attention to detail.
@@ -119,37 +111,28 @@
           </div>
 
           <div class="feature-card">
-            <div class="card-icon">
-              <i class="fas fa-bolt"></i>
-            </div>
+            <div class="card-icon"><i class="fas fa-bolt"></i></div>
             <h3 class="card-title">Fast Performance</h3>
             <p class="card-description">
               Optimizing for speed and smooth user experiences.
             </p>
           </div>
         </div>
+      </section>
 
-      </div>
-    </section>
-
-    <!-- =========== SKILLS =========== -->
-    <section id="skills" class="skills container">
-      <div class="container">
-        <!-- Section Headings -->
+      <section id="skills" class="skills container">
         <p class="section-intro">What I Offer</p>
         <h2 class="section-title">My Skills</h2>
 
-        <!-- Skills Grid -->
         <div class="skills-grid">
-          <!-- Skill 1: HTML5 -->
           <div class="skill-card">
             <div class="skill-icon"><i class="fab fa-html5"></i></div>
             <h3 class="skill-name">HTML5</h3>
             <div class="skill-level-bar">
-              <div class="skill-level" style="width: 98%"></div>
+              <div class="skill-level" style="width: 95%"></div>
             </div>
           </div>
-          <!-- Skill 2: CSS3 -->
+
           <div class="skill-card">
             <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
             <h3 class="skill-name">CSS3</h3>
@@ -157,56 +140,48 @@
               <div class="skill-level" style="width: 90%"></div>
             </div>
           </div>
-          <!-- Skill 3: JavaScript -->
+
           <div class="skill-card">
             <div class="skill-icon"><i class="fab fa-js-square"></i></div>
             <h3 class="skill-name">JavaScript (ES6+)</h3>
             <div class="skill-level-bar">
-              <div class="skill-level" style="width: 81%"></div>
+              <div class="skill-level" style="width: 85%"></div>
             </div>
           </div>
-          <!-- Skill 4: React -->
+
           <div class="skill-card">
             <div class="skill-icon"><i class="fab fa-react"></i></div>
             <h3 class="skill-name">React.js</h3>
             <div class="skill-level-bar">
-              <div class="skill-level" style="width: 45%"></div>
+              <div class="skill-level" style="width: 75%"></div>
             </div>
           </div>
-          <!-- Skill 5: Git & GitHub -->
+
           <div class="skill-card">
             <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
             <h3 class="skill-name">Git & GitHub</h3>
             <div class="skill-level-bar">
-              <div class="skill-level" style="width: 70%"></div>
+              <div class="skill-level" style="width: 90%"></div>
             </div>
           </div>
-          <!-- Skill 6: Responsive Design -->
+
           <div class="skill-card">
             <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
             <h3 class="skill-name">Responsive Design</h3>
             <div class="skill-level-bar">
-              <div class="skill-level" style="width: 94%"></div>
+              <div class="skill-level" style="width: 98%"></div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- =========== RESUME =========== -->
-    <section id="resume" class="resume container"></section>
-
-    <!-- =========== PROJECTS =========== -->
-    <section id="projects" class="projects container"></section>
-
-    <!-- =========== TESTIMONIALS =========== -->
-    <section id="testimonials" class="testimonials container"></section>
-
-    <!-- =========== CONTACT =========== -->
-    <section id="contact" class="contact container"></section>
-
-    <!-- =========== FOOTER =========== -->
-    <section id="footer" class="footer container"></section>
+      <!-- Keep anchor sections for navigation targets (empty by intent) -->
+      <section id="resume" class="resume container"></section>
+      <section id="projects" class="projects container"></section>
+      <section id="testimonials" class="testimonials container"></section>
+      <section id="contact" class="contact container"></section>
+      <section id="footer" class="footer container"></section>
+    </main>
 
     <script src="main.js"></script>
   </body>
