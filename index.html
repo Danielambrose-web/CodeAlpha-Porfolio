@@ -11,23 +11,26 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <!-- Set default theme to dark -->
+  <body data-theme="dark">
+    <!-- HEADER -->
     <header>
       <nav class="container">
-        <a href="#" class="logo">Danielambrose-web</a>
-
+        <a href="#home" class="logo">Danielambrose-web</a>
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#resume">Resume</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-
         <div class="nav-right">
           <button
             id="theme-toggle"
@@ -36,8 +39,11 @@
           >
             <i class="fa-solid fa-sun"></i>
           </button>
-
-          <button class="hamburger" aria-label="Open navigation">
+          <button
+            class="hamburger"
+            aria-label="Open navigation"
+            aria-expanded="false"
+          >
             <i class="fa-solid fa-bars"></i>
           </button>
         </div>
@@ -45,21 +51,24 @@
     </header>
 
     <main>
+      <!-- HERO SECTION -->
       <section id="home" class="hero container">
         <div class="hero-content">
-          <h1 class="hero-title anim">Hello, I’m Daniel Ambrose</h1>
-          <h2 class="hero-subtitle anim">A Junior Frontend web developer</h2>
-          <p class="hero-bio anim">
+          <h1 class="hero-title anim-on-scroll" style="--delay: 1">
+            Hello, I’m Daniel Ambrose
+          </h1>
+          <h2 class="hero-subtitle anim-on-scroll" style="--delay: 2">
+            A Junior Frontend Developer
+          </h2>
+          <p class="hero-bio anim-on-scroll" style="--delay: 3">
             I build elegant, responsive, and user-friendly web applications with
-            a passion for clean code and minimalist design.
+            a passion for clean code and modern design.
           </p>
-
-          <div class="hero-actions anim">
+          <div class="hero-actions anim-on-scroll" style="--delay: 4">
             <a href="#projects" class="btn btn-primary">View My Work</a>
             <a href="#contact" class="btn btn-secondary">Get In Touch</a>
           </div>
-
-          <div class="hero-socials anim">
+          <div class="hero-socials anim-on-scroll" style="--delay: 5">
             <a href="#" target="_blank" aria-label="GitHub"
               ><i class="fab fa-github"></i
             ></a>
@@ -73,354 +82,270 @@
         </div>
       </section>
 
-      <section id="about" class="about">
-        <p class="section-intro">Get To Know</p>
-        <h2 class="section-title">About Me</h2>
+      <!-- ABOUT SECTION -->
+      <section id="about" class="about anim-on-scroll">
+        <div class="container">
+          <p class="section-intro">Get To Know</p>
+          <h2 class="section-title">About Me</h2>
 
-        <div class="about-content">
-          <div class="about-image">
-            <img src="./img/me-at-nsave.jpg" alt="Portrait of the developer" />
-          </div>
-
-          <div class="about-text">
-            <p class="hero-bio anim">
-              I'm a passionate junior frontend developer with a strong interest
-              in design and a love for creating clean, user-friendly digital
-              experiences. I focus on building responsive and interactive
-              interfaces using HTML, CSS, and JavaScript, and I'm continually
-              improving my skills and workflow.
-            </p>
-          </div>
-        </div>
-
-        <div class="about-features">
-          <div class="feature-card">
-            <div class="card-icon"><i class="fas fa-code"></i></div>
-            <h3 class="card-title">Clean Code</h3>
-            <p class="card-description">
-              Writing maintainable and scalable code following best practices.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="card-icon"><i class="fas fa-palette"></i></div>
-            <h3 class="card-title">Creative Design</h3>
-            <p class="card-description">
-              Crafting beautiful interfaces with attention to detail.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="card-icon"><i class="fas fa-bolt"></i></div>
-            <h3 class="card-title">Fast Performance</h3>
-            <p class="card-description">
-              Optimizing for speed and smooth user experiences.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="skills" class="skills container">
-        <p class="section-intro">What I Offer</p>
-        <h2 class="section-title">My Skills</h2>
-
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fab fa-html5"></i></div>
-            <h3 class="skill-name">HTML5</h3>
-            <div class="skill-level-bar">
-              <div class="skill-level" style="width: 95%"></div>
+          <div class="about-content">
+            <div class="about-image">
+              <img
+                src="./img/me-at-nsave.jpg"
+                alt="Portrait of Daniel Ambrose"
+              />
             </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-            <h3 class="skill-name">CSS3</h3>
-            <div class="skill-level-bar">
-              <div class="skill-level" style="width: 90%"></div>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fab fa-js-square"></i></div>
-            <h3 class="skill-name">JavaScript (ES6+)</h3>
-            <div class="skill-level-bar">
-              <div class="skill-level" style="width: 85%"></div>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fab fa-react"></i></div>
-            <h3 class="skill-name">React.js</h3>
-            <div class="skill-level-bar">
-              <div class="skill-level" style="width: 75%"></div>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-            <h3 class="skill-name">Git & GitHub</h3>
-            <div class="skill-level-bar">
-              <div class="skill-level" style="width: 90%"></div>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
-            <h3 class="skill-name">Responsive Design</h3>
-            <div class="skill-level-bar">
-              <div class="skill-level" style="width: 98%"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Keep anchor sections for navigation targets (empty by intent) -->
-      <section id="resume" class="resume container">
-        <p class="section-intro">My Journey</p>
-        <h2 class="section-title">Resume</h2>
-
-        <!-- Resume Grid Layout -->
-        <div class="resume-grid">
-          <!-- Left Column: Experience -->
-          <div class="resume-column">
-            <h3 class="column-title">
-              <i class="fas fa-briefcase"></i> Experience
-            </h3>
-
-            <div class="resume-card">
-              <h4 class="card-title-main">Team Lead / Frontend Developer</h4>
-              <p class="card-subtitle company">
-                Department of Information Systems, Uniuyo
+            <div class="about-text">
+              <p>
+                I'm a passionate self-taught junior frontend developer with a
+                strong interest in design and a love for creating clean,
+                user-friendly digital experiences. I focus on building
+                responsive and interactive interfaces using HTML, CSS, and
+                JavaScript, and I'm continually improving my skills and
+                workflow.
               </p>
-              <p class="card-duration">April 2025 - August 2025</p>
+            </div>
+          </div>
+
+          <div class="about-features">
+            <div class="feature-card">
+              <div class="card-icon"><i class="fas fa-code"></i></div>
+              <h3 class="card-title">Clean Code</h3>
               <p class="card-description">
-                Led a team (Group-6) in developing a functional survey system as
-                part of a departmental project. Coordinated frontend design,
-                task management, and project documentation to ensure on-time
-                delivery.
+                Writing maintainable and scalable code following best practices.
               </p>
             </div>
-
-            <div class="resume-card">
-              <h4 class="card-title-main">Team Lead / Frontend Developer</h4>
-              <p class="card-subtitle company">
-                Department Website Project – Uniuyo
-              </p>
-              <p class="card-duration">2025</p>
+            <div class="feature-card">
+              <div class="card-icon"><i class="fas fa-palette"></i></div>
+              <h3 class="card-title">Creative Design</h3>
               <p class="card-description">
-                Spearheaded the design and development of the departmental
-                website, managing both the layout and responsive implementation
-                using HTML, CSS, and JavaScript.
+                Crafting beautiful interfaces with attention to detail.
               </p>
             </div>
-
-            <div class="resume-card">
-              <h4 class="card-title-main">Frontend Mentor / Volunteer</h4>
-              <p class="card-subtitle company">Community Tutoring Program</p>
-              <p class="card-duration">August 2025</p>
+            <div class="feature-card">
+              <div class="card-icon"><i class="fas fa-bolt"></i></div>
+              <h3 class="card-title">Fast Performance</h3>
               <p class="card-description">
-                Taught HTML and CSS to secondary school students at Redeemer
-                Schools (science and technical college),Uyo, helping them
-                understand web structure, styling, and responsive design
-                fundamentals.
-              </p>
-            </div>
-          </div>
-
-          <!-- Right Column: Education -->
-          <div class="resume-column">
-            <h3 class="column-title">
-              <i class="fas fa-graduation-cap"></i> Education
-            </h3>
-
-            <div class="resume-card">
-              <h4 class="card-title-main">B.Sc. in Information Systems</h4>
-              <p class="card-subtitle company">University of Uyo, Nigeria</p>
-              <p class="card-duration">2025" - present</p>
-              <p class="card-description">
-                Currently pursuing a degree focused on web development,
-                databases, and system analysis.
-              </p>
-            </div>
-
-            <div class="resume-card">
-              <h4 class="card-title-main">
-                Certificate in Responsive Web Design
-              </h4>
-              <p class="card-subtitle company">freeCodeCamp</p>
-              <p class="card-duration">2025</p>
-              <p class="card-description">
-                Completed a comprehensive course covering the principles of
-                responsive design, layout grids, accessibility, and mobile-first
-                development techniques.
+                Optimizing for speed and smooth user experiences.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="projects" class="projects container">
-        <p class="section-intro">My Work</p>
-        <h2 class="section-title">Projects</h2>
+      <!-- SKILLS SECTION -->
+      <section id="skills" class="skills">
+        <div class="container anim-on-scroll">
+          <p class="section-intro">What I Offer</p>
+          <h2 class="section-title">My Skills</h2>
 
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-          <!-- Project Card 1: E-Commerce Platform -->
-          <div class="project-card">
-            <img
-              class="project-image"
-              src="./img/projects/e-commerce.png"
-              alt="E-Commerce Platform Screenshot"
-            />
-            <div class="project-content">
-              <h3 class="project-title">E-Commerce Platform</h3>
-              <p class="project-description">
-                A simple E-commerce platform with product listings, shopping
-                cart...
-              </p>
-              <div class="project-tags">
-                <span class="tag tag-green">html</span>
-                <span class="tag tag-blue">css</span>
-                <span class="tag tag-purple">js</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="btn btn-secondary"
-                  ><i class="fab fa-github"></i> Code</a
-                >
-                <a href="#" class="btn btn-primary"
-                  ><i class="fas fa-external-link-alt"></i> Demo</a
-                >
+          <div class="skills-grid">
+            <!-- Skill Items -->
+            <div class="skill-card">
+              <div class="skill-icon"><i class="fab fa-html5"></i></div>
+              <h3 class="skill-name">HTML5</h3>
+              <div class="skill-level-bar">
+                <div class="skill-level" style="width: 95%"></div>
               </div>
             </div>
-          </div>
-
-          <!-- Project Card 2: Task Management App -->
-          <div class="project-card">
-            <img
-              class="project-image"
-              src="./img/projects/portfolio.png"
-              alt="Portfolio Template Screenshot"
-            />
-            <div class="project-content">
-              <h3 class="project-title">Portfolio Template</h3>
-              <p class="project-description">
-                Modern, responsive portfolio template for developers and
-                designers with dark mode support and animations.
-              </p>
-              <div class="project-tags">
-                <span class="tag tag-green">React</span>
-                <span class="tag tag-blue">CSS</span>
-                <span class="tag tag-purple">Framer Motion</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="btn btn-secondary"
-                  ><i class="fab fa-github"></i> Code</a
-                >
-                <a href="#" class="btn btn-primary"
-                  ><i class="fas fa-external-link-alt"></i> Demo</a
-                >
+            <div class="skill-card">
+              <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+              <h3 class="skill-name">CSS3</h3>
+              <div class="skill-level-bar">
+                <div class="skill-level" style="width: 90%"></div>
               </div>
             </div>
-          </div>
-
-          <!-- Project Card 3: Portfolio Template -->
-          <div class="project-card">
-            <img
-              class="project-image"
-              src="./img/projects/survey.png"
-              alt="Portfolio Template Screenshot"
-            />
-            <div class="project-content">
-              <h3 class="project-title">A survey Systems</h3>
-              <p class="project-description">
-                A survey system for collecting and analyzing user feedback with
-                customizable questionnaires and data visualization.
-              </p>
-              <div class="project-tags">
-                <span class="tag tag-green">HTML</span>
-                <span class="tag tag-blue">CSS</span>
-                <span class="tag tag-purple">Json</span>
-                <span class="tag tag-blue">Flask</span>
-                <span class="tag tag-purple">Sqlite</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="btn btn-secondary"
-                  ><i class="fab fa-github"></i> Code</a
-                >
-                <a href="#" class="btn btn-primary"
-                  ><i class="fas fa-external-link-alt"></i> Demo</a
-                >
+            <div class="skill-card">
+              <div class="skill-icon"><i class="fab fa-js-square"></i></div>
+              <h3 class="skill-name">JavaScript</h3>
+              <div class="skill-level-bar">
+                <div class="skill-level" style="width: 85%"></div>
               </div>
             </div>
-          </div>
-
-          <div class="project-card">
-            <img
-              class="project-image"
-              src="./img/projects/risstc.png"
-              alt="Portfolio Template Screenshot"
-            />
-            <div class="project-content">
-              <h3 class="project-title">School Website</h3>
-              <p class="project-description">
-                A responsive website for Redeemer Schools (science and technical
-                college),Uyo showcasing school information, admissions, and
-                events.
-              </p>
-              <div class="project-tags">
-                <span class="tag tag-green">HTML</span>
-                <span class="tag tag-blue">CSS</span>
-                <span class="tag tag-purple">JS</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="btn btn-secondary"
-                  ><i class="fab fa-github"></i> Code</a
-                >
-                <a href="#" class="btn btn-primary"
-                  ><i class="fas fa-external-link-alt"></i> Demo</a
-                >
+            <div class="skill-card">
+              <div class="skill-icon"><i class="fab fa-react"></i></div>
+              <h3 class="skill-name">React.js</h3>
+              <div class="skill-level-bar">
+                <div class="skill-level" style="width: 75%"></div>
               </div>
             </div>
-          </div>
-
-          <div class="project-card">
-            <img
-              class="project-image"
-              src="./img/projects/leadtracker.png"
-              alt="Portfolio Template Screenshot"
-            />
-            <div class="project-content">
-              <h3 class="project-title">Leads Tracker</h3>
-              <p class="project-description">
-                A leads tracking application to manage and organize sales leads,
-                track interactions, and monitor conversion rates.
-              </p>
-              <div class="project-tags">
-                <span class="tag tag-green">HTML</span>
-                <span class="tag tag-blue">CSS</span>
-                <span class="tag tag-purple">Json</span>
+            <div class="skill-card">
+              <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+              <h3 class="skill-name">Git & GitHub</h3>
+              <div class="skill-level-bar">
+                <div class="skill-level" style="width: 90%"></div>
               </div>
-              <div class="project-links">
-                <a href="#" class="btn btn-secondary"
-                  ><i class="fab fa-github"></i> Code</a
-                >
-                <a href="#" class="btn btn-primary"
-                  ><i class="fas fa-external-link-alt"></i> Demo</a
-                >
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+              <h3 class="skill-name">Responsive Design</h3>
+              <div class="skill-level-bar">
+                <div class="skill-level" style="width: 98%"></div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <!-- Keep anchor sections for navigation targets (empty by intent) -->
-      <section id="testimonials" class="testimonials container">
 
+      <!-- RESUME SECTION -->
+      <section id="resume" class="resume">
+        <div class="container anim-on-scroll">
+          <p class="section-intro">My Journey</p>
+          <h2 class="section-title">Resume</h2>
+
+          <div class="resume-grid">
+            <div class="resume-column">
+              <h3 class="column-title">
+                <i class="fas fa-briefcase"></i> Experience
+              </h3>
+              <div class="resume-card">
+                <h4 class="card-title-main">Team Lead / Frontend Developer</h4>
+                <p class="card-subtitle company">
+                  Dept. of Info Systems, Uniuyo
+                </p>
+                <p class="card-duration">Apr 2025 - Aug 2025</p>
+                <p class="card-description">
+                  Led a team to develop a functional survey system, coordinating
+                  frontend design, task management, and project documentation.
+                </p>
+              </div>
+              <div class="resume-card">
+                <h4 class="card-title-main">Frontend Mentor / Volunteer</h4>
+                <p class="card-subtitle company">Talent hunt Program</p>
+                <p class="card-duration">Aug 2025</p>
+                <p class="card-description">
+                  Taught HTML and CSS to secondary school students, covering web
+                  structure, styling, and responsive design fundamentals.
+                </p>
+              </div>
+            </div>
+
+            <div class="resume-column">
+              <h3 class="column-title">
+                <i class="fas fa-graduation-cap"></i> Education
+              </h3>
+              <div class="resume-card">
+                <h4 class="card-title-main">B.Sc. in Information Systems</h4>
+                <p class="card-subtitle company">University of Uyo, Nigeria</p>
+                <p class="card-duration">2025 - Present</p>
+                <p class="card-description">
+                  Pursuing a degree focused on web development, databases, and
+                  system analysis.
+                </p>
+              </div>
+              <div class="resume-card">
+                <h4 class="card-title-main">
+                  Certificate in Responsive Web Design
+                </h4>
+                <p class="card-subtitle company">freeCodeCamp</p>
+                <p class="card-duration">2025</p>
+                <p class="card-description">
+                  Completed a comprehensive course covering responsive design,
+                  layout grids, accessibility, and mobile-first development.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-                <!-- =========== CONTACT SECTION START =========== -->
-        <section id="contact" class="contact">
+
+      <!-- PROJECTS SECTION -->
+      <section id="projects" class="projects">
+        <div class="container anim-on-scroll">
+          <p class="section-intro">My Work</p>
+          <h2 class="section-title">Projects</h2>
+
+          <div class="projects-grid">
+            <div class="project-card">
+              <img
+                class="project-image"
+                src="./img/projects/e-commerce.png"
+                alt="E-Commerce Platform Screenshot"
+              />
+              <div class="project-content">
+                <h3 class="project-title">E-Commerce Platform</h3>
+                <p class="project-description">
+                  A simple E-commerce platform with product listings, a shopping
+                  cart, and a responsive layout for all devices.
+                </p>
+                <div class="project-tags">
+                  <span class="tag tag-primary">HTML</span>
+                  <span class="tag tag-secondary">CSS</span>
+                  <span class="tag tag-primary">JS</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" class="btn btn-secondary"
+                    ><i class="fab fa-github"></i> Code</a
+                  >
+                  <a href="#" class="btn btn-primary"
+                    ><i class="fas fa-external-link-alt"></i> Demo</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="project-card">
+              <img
+                class="project-image"
+                src="./img/projects/portfolio.png"
+                alt="Portfolio Template Screenshot"
+              />
+              <div class="project-content">
+                <h3 class="project-title">Portfolio Template</h3>
+                <p class="project-description">
+                  A modern, responsive portfolio template for developers with
+                  dark mode support and smooth animations.
+                </p>
+                <div class="project-tags">
+                  <span class="tag tag-primary">React</span>
+                  <span class="tag tag-secondary">CSS</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" class="btn btn-secondary"
+                    ><i class="fab fa-github"></i> Code</a
+                  >
+                  <a href="#" class="btn btn-primary"
+                    ><i class="fas fa-external-link-alt"></i> Demo</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="project-card">
+              <img
+                class="project-image"
+                src="./img/projects/survey.png"
+                alt="Survey System Screenshot"
+              />
+              <div class="project-content">
+                <h3 class="project-title">Survey System</h3>
+                <p class="project-description">
+                  A survey system for collecting and analyzing user feedback
+                  with customizable questionnaires and data visualization.
+                </p>
+                <div class="project-tags">
+                  <span class="tag tag-primary">HTML</span>
+                  <span class="tag tag-secondary">Flask</span>
+                  <span class="tag tag-primary">SQLite</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" class="btn btn-secondary"
+                    ><i class="fab fa-github"></i> Code</a
+                  >
+                  <a href="#" class="btn btn-primary"
+                    ><i class="fas fa-external-link-alt"></i> Demo</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section id="contact" class="contact">
+        <div class="container anim-on-scroll">
           <p class="section-intro">Get In Touch</p>
           <h2 class="section-title">Contact Me</h2>
+
           <div class="contact-info-grid">
             <div class="info-card">
               <i class="fas fa-envelope"></i>
@@ -430,16 +355,15 @@
             <div class="info-card">
               <i class="fas fa-phone"></i>
               <h3>Phone</h3>
-              <p>07046253879</p>
+              <p>+234 704 625 3879</p>
             </div>
             <div class="info-card">
               <i class="fas fa-map-marker-alt"></i>
               <h3>Location</h3>
-              <p>Uyo, Akwa Ibom State</p>
+              <p>Uyo, Nigeria</p>
             </div>
           </div>
 
-          <!-- Contact Form -->
           <form class="contact-form">
             <div class="form-group">
               <label for="name">Name</label>
@@ -457,7 +381,7 @@
                 type="email"
                 id="email"
                 name="email"
-                placeholder="@gmail.com"
+                placeholder="your.email@example.com"
                 required
               />
             </div>
@@ -475,18 +399,22 @@
               Send Message
             </button>
           </form>
+        </div>
       </section>
-      <section id="footer" class="footer container">
-         <div class="footer-grid">
-          <!-- Footer About -->
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="container">
+        <div class="footer-grid">
           <div class="footer-column footer-about">
-            <a href="#" class="footer-logo">Danielambrose-web</a>
+            <a href="#home" class="logo">Danielambrose.dev</a>
             <p>
-Junior Frontend Developer passionate about crafting clean, responsive, and user-friendly web applications.
+              Junior Frontend Developer passionate about crafting clean,
+              responsive, and user-friendly web applications.
             </p>
           </div>
 
-          <!-- Footer Links -->
           <div class="footer-column footer-links">
             <h3>Quick Links</h3>
             <ul>
@@ -498,7 +426,6 @@ Junior Frontend Developer passionate about crafting clean, responsive, and user-
             </ul>
           </div>
 
-          <!-- Footer Connect -->
           <div class="footer-column footer-connect">
             <h3>Connect</h3>
             <div class="social-icons">
@@ -506,7 +433,7 @@ Junior Frontend Developer passionate about crafting clean, responsive, and user-
               <a href="#" aria-label="LinkedIn"
                 ><i class="fab fa-linkedin-in"></i
               ></a>
-              <a href="mailto:your.email@example.com" aria-label="Email"
+              <a href="mailto:danielessientech121@gmail.com" aria-label="Email"
                 ><i class="fas fa-envelope"></i
               ></a>
             </div>
@@ -514,14 +441,19 @@ Junior Frontend Developer passionate about crafting clean, responsive, and user-
           </div>
         </div>
 
-        <!-- Footer Bottom Bar -->
         <div class="footer-bottom">
-          <p>Made with <i class="fas fa-heart"></i> by Danielambrose-web</p>
-          <p>&copy; 2025 All rights reserved.</p>
+          <p>
+            Made with <i class="fas fa-heart"></i> by Daniel Ambrose &copy; 2025
+            All rights reserved.
+          </p>
         </div>
       </div>
-      </section>
-    </main>
+    </footer>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="main.js"></script>
   </body>
