@@ -1,128 +1,120 @@
-// Theme toggle (persisted)
-const themeToggle = document.getElementById("theme-toggle");
-const currentTheme = localStorage.getItem("theme");
-
-if (themeToggle) {
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. THEME TOGGLER
+  const themeToggle = document.getElementById("theme-toggle");
   const themeIcon = themeToggle.querySelector("i");
+  const currentTheme = localStorage.getItem("theme") || "dark"; // Default to dark
 
-  if (currentTheme) {
-    document.body.setAttribute("data-theme", currentTheme);
-    if (currentTheme === "light" && themeIcon) {
-      themeIcon.classList.remove("fa-sun");
-      themeIcon.classList.add("fa-moon");
-    }
+  // Apply the saved theme on page load
+  document.body.setAttribute("data-theme", currentTheme);
+  if (currentTheme === "light") {
+    themeIcon.classList.remove("fa-sun");
+    themeIcon.classList.add("fa-moon");
   }
 
   themeToggle.addEventListener("click", () => {
-    const theme = document.body.getAttribute("data-theme");
-    if (theme === "dark") {
-      document.body.setAttribute("data-theme", "light");
-      localStorage.setItem("theme", "light");
-      if (themeIcon) {
-        themeIcon.classList.remove("fa-sun");
-        themeIcon.classList.add("fa-moon");
-      }
+    let newTheme =
+      document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    document.body.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+
+    // Update icon
+    if (newTheme === "light") {
+      themeIcon.classList.remove("fa-sun");
+      themeIcon.classList.add("fa-moon");
     } else {
-      document.body.setAttribute("data-theme", "dark");
-      localStorage.setItem("theme", "dark");
-      if (themeIcon) {
-        themeIcon.classList.remove("fa-moon");
-        themeIcon.classList.add("fa-sun");
-      }
+      themeIcon.classList.remove("fa-moon");
+      themeIcon.classList.add("fa-sun");
     }
   });
-}
 
-// Hero entrance animations
-document.querySelectorAll(".anim").forEach((el, i) => {
-  setTimeout(() => el.classList.add("is-visible"), i * 200);
-});
+  // 2. MOBILE NAVIGATION
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+  const navLinksItems = document.querySelectorAll(".nav-links li");
 
-// Navigation & hamburger
-const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
-const navLinksLi = document.querySelectorAll(".nav-links li");
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isActive = navLinks.classList.toggle("active");
+      hamburger.setAttribute("aria-expanded", isActive);
 
-if (hamburger && navLinks) {
-  hamburger.addEventListener("click", (e) => {
-    e.stopPropagation();
-    navLinks.classList.toggle("active");
-
-    const icon = hamburger.querySelector("i");
-    if (icon) {
+      // Toggle icon
+      const icon = hamburger.querySelector("i");
       icon.classList.toggle("fa-bars");
       icon.classList.toggle("fa-times");
-    }
+    });
+  }
 
-    navLinksLi.forEach((link, index) => {
-      if (link.style.animation) link.style.animation = "";
-      else
-        link.style.animation = `navLinkFade 0.5s ease forwards ${
-          index / 7 + 0.3
-        }s`;
+  // Close menu when a link is clicked
+  navLinksItems.forEach((li) => {
+    li.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+      const icon = hamburger.querySelector("i");
+      icon.classList.remove("fa-times");
+      icon.classList.add("fa-bars");
     });
   });
-}
 
-navLinksLi.forEach((li) =>
-  li.addEventListener("click", () => {
-    if (navLinks) navLinks.classList.remove("active");
-    const icon = document.querySelector(".hamburger i");
-    if (icon) {
-      icon.classList.add("fa-bars");
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (
+      navLinks.classList.contains("active") &&
+      !navLinks.contains(e.target) &&
+      !hamburger.contains(e.target)
+    ) {
+      navLinks.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+      const icon = hamburger.querySelector("i");
       icon.classList.remove("fa-times");
+      icon.classList.add("fa-bars");
     }
-  })
-);
+  });
 
-// Close menu when clicking outside
-document.addEventListener("click", (e) => {
-  if (!navLinks?.contains(e.target) && !hamburger?.contains(e.target)) {
-    navLinks?.classList.remove("active");
-    const icon = document.querySelector(".hamburger i");
-    if (icon) {
-      icon.classList.add("fa-bars");
-      icon.classList.remove("fa-times");
-    }
+  // 3. SCROLL-BASED ANIMATIONS (INTERSECTION OBSERVER)
+  const animatedElements = document.querySelectorAll(".anim-on-scroll");
+
+  if (animatedElements.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            // Optional: stop observing after it's visible
+            // observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the element is visible
+      }
+    );
+
+    animatedElements.forEach((element) => {
+      observer.observe(element);
+    });
   }
-});
 
-// About section reveal using IntersectionObserver
-const aboutSection = document.querySelector(".about");
-if (aboutSection) {
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate");
-          obs.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-  observer.observe(aboutSection);
-}
-document.addEventListener("DOMContentLoaded", () => {
-  const animatedSections = document.querySelectorAll(".animate-on-scroll");
-  if (animatedSections.length === 0) return;
+  // Staggered hero animation is handled by CSS now but this ensures the class is added on load for the first section
+  document.querySelectorAll(".hero .anim-on-scroll").forEach((el) => {
+    el.classList.add("is-visible");
+  });
 
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      root: null,
-      threshold: 0.15,
+  // 4. SCROLL-TO-TOP BUTTON
+  const scrollToTopBtn = document.getElementById("scrollToTop");
+
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 300) {
+      scrollToTopBtn.classList.add("visible");
+    } else {
+      scrollToTopBtn.classList.remove("visible");
     }
-  );
+  });
 
-  animatedSections.forEach((section) => {
-    observer.observe(section);
+  scrollToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   });
 });
