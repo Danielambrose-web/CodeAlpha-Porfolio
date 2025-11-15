@@ -156,6 +156,22 @@ header nav {
   font-weight: 600;
   font-size: 1.2rem;
   transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .nav-links a:hover {
@@ -662,9 +678,26 @@ footer {
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.3s;
+  position: relative;
 }
+
+.footer-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
 .footer-links a:hover {
   color: var(--primary-color);
+}
+
+.footer-links a:hover::after {
+  width: 100%;
 }
 
 .footer-connect .social-icons {
