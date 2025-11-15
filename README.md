@@ -1,6 +1,6 @@
 # Modern & Responsive Personal Portfolio Website
 
-![Portfolio Screenshot][./img/forReadmi.png]
+![Portfolio Screenshot](./img/forReadmi.png)
 
 A clean, modern, and fully responsive personal portfolio website template built from scratch with HTML, CSS, and Vanilla JavaScript. This project was designed to be easily customizable and showcases a variety of modern web development techniques.
 
